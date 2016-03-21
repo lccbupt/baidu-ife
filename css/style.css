@@ -1,0 +1,27 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0; font-family:"黑体"}
+body{ background-color:#eee}
+
+.header{ height:60px; width:100%; background-color:#333; color:#FFF;}
+.header ul li{ display:inline-block;}
+.header ul li a{color:#FFF; text-decoration:none; font-size:10px;}
+.nav{float:right; margin-top:-30px; padding-right:20px;}
+.header h1{padding-top:10px; padding-left:100px;}
+#container{ width:1200px; margin:auto;}
+.first,.second,.third,.forth,.last{ height:500px; border-color:#999; border-style:solid; border-bottom-width:2px; border-right-width:2px; border-top-width:1px; border-left-width:1px;margin:20px 0px 20px 0px; background-color:#FFF; padding:40px; line-height:30px;}
+h3{font-size:18px; color:#999; line-height:60px;}
+h2{font-size:20px;}
+.first span,.second span,.third span,.forth span,.lastspan{ font-size:14px;color:#999;}
+.second ul li{ list-style:none;}
+.third{height:900px;}
+.photo{width:102px; border:1px solid #ddd; padding:10px; margin:10px 0 10px 0;}
+.photo p{ text-align:center;}
+.forth ol{margin-left:30px;}
+#demo-table{border-collapse:collapse; border:1px solid #CCC; font-size:14px;}
+.log{ font-size:14px;}
+.log span{ font-size:12px; color:#999;}
+.text{width:200px;height:30px;}
+.col1{text-align:right;padding:0 10px 0 0;} 
+textarea{width:300px; height:100px;}
+footer{ height:40px; width:100%; background-color:#333; color:#FFF; text-align:center;font-size:14px;padding:20px 0 0 0;}
