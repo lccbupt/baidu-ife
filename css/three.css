@@ -1,0 +1,10 @@
+@charset "utf-8";
+/* CSS Document */
+*{ margin:0; padding:0; font-family:"黑体";}
+img{border:1px solid #999; }
+.wrap{ margin:10px 10px; height:600px; border:1px solid #999; background-color:#eee;}
+.left{width:200px; border:1px solid #999; position:absolute; top:30px; left:30px; background-color:#FFF;}
+.right{ width:120px; border:1px solid #999; position:absolute;top:30px;right:30px;background-color:#FFF;}
+.right img{ margin:20px 20px 0 20px;}
+.middle{ border:1px solid #999; margin-left:240px; margin-right:160px; margin-top:20px; padding:20px;background-color:#FFF;}
+.middle p{ font-family:"黑体"; font-size:14px; line-height:220%; text-indent:2em; margin:20px;}
