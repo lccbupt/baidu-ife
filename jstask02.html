@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>IFE JavaScript Task 01</title>
+  </head>
+<body>
+
+  <h3>污染城市列表</h3>
+  <ul id="aqi-list">
+<!--   
+    <li>第一名：福州（样例），10</li>
+  	<li>第二名：福州（样例），10</li> -->
+  </ul>
+
+<script type="text/javascript">
+
+var aqiData = [
+  ["北京", 90],
+  ["上海", 50],
+  ["福州", 10],
+  ["广州", 50],
+  ["成都", 90],
+  ["西安", 100]
+];
+
+(function () {
+
+  /*
+  在注释下方编写代码
+  遍历读取aqiData中各个城市的数据
+  将空气质量指数大于60的城市显示到aqi-list的列表中
+  */
+  var i;
+  var len=aqiData.length;
+  var ul=document.getElementById('aqi-list');
+  var array=[];
+  for(i=0;i<len;i++){
+	   if(aqiData[i][1]>60){
+		   array.push([aqiData[i][0],aqiData[i][1]]);
+		   }
+  }
+		   array.sort(function(a,b){
+			   return b[1]-a[1];
+			   })
+		  
+		   for(j=0;j<array.length;j++){
+			var li=document.createElement('li');//注意li标签声明的地方，若是在for循环之外就只能显示一个li标签
+		   li.innerHTML='第'+(j+1)+'名:'+array[j][0]+''+array[j][1];
+		   ul.appendChild(li);
+		   }
+		   
+	  
+
+})();
+
+</script>
+</body>
+</html>
