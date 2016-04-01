@@ -1,0 +1,76 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+.arrage ul li{ list-style:none; display:inline-block; width:50px; height:50px; background-color:#F00; text-align:center; line-height:50px; color:#FFF; margin-left:10px;}
+</style>
+</head>
+
+<body>
+<div class="main">
+  <div class="num">
+    <input type="text" id="inputer" />
+    <button id="left-in">左侧入</button>
+    <button id="right-in">右侧入</button>
+    <button id="left-out">左侧出</button>
+    <button id="right-out">右侧出</button>
+  </div>
+  <div class="arrage">
+      <ul id="list">
+        
+      </ul>
+  </div>
+  <script>
+    function getNum(){
+		var num=document.getElementById('inputer');
+		var lti=document.getElementById('left-in');
+		var rti=document.getElementById('right-in');
+		var lto=document.getElementById('left-out');
+		var rto=document.getElementById('right-out');
+		var lis=document.getElementById('list');
+		 rti.onclick=function(){
+			 var li=document.createElement('li');
+			 li.innerHTML=num.value;
+			 li.setAttribute("newli","newlist")
+			 lis.appendChild(li);
+			 }
+		
+		lti.onclick=function(){
+			 var li=document.createElement('li');
+			 li.innerHTML=num.value;
+			 var child=lis.getElementsByTagName('li')[0];
+			 lis.insertBefore(li,child);
+			 }
+		lto.onclick=function(){
+			 var child=lis.getElementsByTagName('li')[0];
+			 if(lis){
+				lis.removeChild(child); 
+				 }
+			 }
+		rto.onclick=function(){
+			 var child=lis.lastChild;
+		     lis.removeChild(child); 
+		}	
+	    lis.addEventListener('click',function(){
+		var list=document.getElementsByTagName('li');
+		for(var i=0;i<list.length;i++){
+			 list[i].onclick=function(node){
+			 return function (){
+				 node.parentNode.removeChild(node);
+				 }
+			}(list[i])
+		}
+		});
+}
+           getNum();
+	  
+		
+    
+		
+		
+  </script>
+</div>
+</body>
+</html>
