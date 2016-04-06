@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<style>
+li{
+display:inline-block;
+color:#FFF;
+padding: 4px;
+padding-top:5px;
+margin:2px;
+width: 12px;
+font-size: 8;
+text-align: center;
+}
+ul{
+display: flex;
+height: 180px;
+align-items: flex-end;
+justify-content: flex-start;
+padding: 5px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="main">
+   <input type="text" id="num" />
+   <button id="left-in">左入</button>
+   <button id="left-out">左出</button>
+   <button id="right-in">右入</button>
+   <button id="right-out">右出</button>
+   <button id="sort">排序</button>
+</div>
+
+<ul id="display"></ul>
+
+<script>
+   var data=[];
+   var num=document.getElementById('num');
+   var data_dis=document.getElementById('display');  
+  
+   function getInput(){ 
+      input_num=num.value.trim();
+	   if(data.length>=60)
+	   {
+		   alert("数据已满，请删除不需要数据");
+		   return 0;
+		   }
+		if(input_num>=100 || input_num<=10){
+			alert("请输入10-100数字");
+			return 0;
+			}
+		if(input_num===""){
+			alert("请输入数字");
+			return 0;
+			}
+		if(isNaN(input_num)){
+			alert("请输入数字");
+			return 0;
+			}
+	   }
+	   
+	   	function rancolor(){
+		  var colorstr=["#FF4D00","#FFBF00","#00FFFF","#66FF00","#6495ED","#DA70D6","#C0C0C0","#8CE600","#FF8C69","#00FA9A"];
+		  var i=Math.floor(Math.random()*10);
+		  return colorstr[i];
+		  }
+
+	  function renderChart(){
+		
+		  data_dis.innerHTML="";
+		  for(var i=0;i<=data.length-1;i++){
+			  var ele=document.createElement("li");
+			  ele.style.height=data[i]*1.6+"px";
+			  ele.style.backgroundColor=rancolor();
+			  data_dis.appendChild(ele);
+			  }
+		  }
+	   
+	function insertLeft(){
+		if(getInput()==0){
+			return;
+			}
+		data.unshift(input_num);
+		renderChart();
+		}
+	function insertRight(){
+
+		if(getInput()==0)
+		return;
+		data.push(input_num);
+		renderChart();
+		}
+	function delLeft(){
+		if(data.length===0){
+			alert("已无数据")
+			return false;
+			}
+		alert("删除‘"+data.shift()+"'!");
+		renderChart();
+		}
+	function delRight(){
+		if(data.length===0){
+			alert("已无数据")
+			return false;
+			}
+		alert("删除'"+data.pop()+"'!");
+		renderChart();
+		}
+	function delThis(index){
+		data.splice(index,1);
+		renderChart();
+		}
+	function sortData(){
+		var i=0,j=1,temp;
+		var len=data.length;
+		var timer=null;
+		timer=setInterval(run,25);
+		function run(){
+			if(i<len){
+				if(j<len){
+					if(data[i]>data[j]){
+						temp=data[i];
+						data[i]=data[j];
+						data[j]=temp;
+						renderChart();
+						}
+						j++;
+					}else{
+						i++;
+						j=i+1;
+						}
+					}else{
+						clearInterval(timer);
+						return;
+						}
+			}
+		}
+		
+		function initBtn(){
+			var insertleft=document.getElementById('left-in');
+			var insertright=document.getElementById('right-in');
+			var delleft=document.getElementById('left-out');
+			var delright=document.getElementById('right-out');
+			var sortdata=document.getElementById('sort');
+			insertleft.onclick=function(){insertLeft();};
+			insertright.onclick=function(){insertRight();};
+			delleft.onclick=function(){delLeft();};
+			delright.onclick=function(){delRight();};
+			sortdata.onclick=function(){sortData();};
+			data_dis.addEventListener("click",function(e){
+				delThis(e);
+				renderChart();
+				});
+			}
+		function init(){
+			initBtn();
+			renderChart();
+			}
+		init();
+			
+</script>
+</body>
+</html>
